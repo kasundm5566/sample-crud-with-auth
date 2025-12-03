@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test_auth
+      database: test_auth
+
+resilience4j:
+  ratelimiter:
+    instances:
+      authApi:
+        limit-for-period: 5             # Max 5 requests
+        limit-refresh-period: 10s       # Every 10 seconds
+        timeout-duration: 0             # Don't wait; fail immediately
